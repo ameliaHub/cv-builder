@@ -57,21 +57,8 @@ function App() {
   const handleButtonClick = (action) => {
     if (action === "limpiar") {
       setGeneralInfo({ userName: "", email: "", phone: "" });
-      setEducation({
-        school: "",
-        degree: "",
-        startDate: "",
-        endDate: "",
-        location: "",
-      });
-      setExperience({
-        company: "",
-        position: "",
-        startDate: "",
-        endDate: "",
-        location: "",
-        description: "",
-      });
+      setEducation([]);
+      setExperience([]);
     } else if (action === "cargarEjemplo") {
       setGeneralInfo(initialGeneralInfo);
       setEducation(initialEducation);
