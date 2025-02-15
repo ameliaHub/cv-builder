@@ -20,29 +20,41 @@ function CvPreview({ generalInfo, education, experience }) {
       </CvSection>
 
       <CvSection title="Educación" className="education">
-        <div className="date">
-          <p className="startDate">{education.startDate}</p>
-          <p className="endDate">{education.endDate}</p>
-        </div>
+        <div className="education-container">
+          {education.map((educ, index) => (
+            <div key={index} className="education-item">
+              <div className="date">
+                <p className="startDate">{educ.startDate}</p>
+                <p className="endDate">{educ.endDate}</p>
+              </div>
 
-        <p>
-          <strong>{education.school}</strong>
-        </p>
-        <p>{education.location}</p>
-        <p>{education.degree}</p>
+              <p>
+                <strong>{educ.school}</strong>
+              </p>
+              <p>{educ.location}</p>
+              <p>{educ.degree}</p>
+            </div>
+          ))}
+        </div>
       </CvSection>
 
       <CvSection title="Experiencia Laboral" className="experience">
-        <div className="date">
-          <p className="startDate">{experience.startDate}</p>
-          <p className="endDate">{experience.endDate}</p>
+        <div className="experience-container">
+          {experience.map((exp, index) => (
+            <div key={index} className="experience-item">
+              <div className="date">
+                <p className="startDate">{exp.startDate}</p>
+                <p className="endDate">{exp.endDate}</p>
+              </div>
+              <p>
+                <strong>{exp.company}</strong>
+              </p>
+              <p>{exp.location}</p>
+              <p>{exp.position}</p>
+              <p className="experience-desc">{exp.description}</p>
+            </div>
+          ))}
         </div>
-        <p>
-          <strong>{experience.company}</strong>
-        </p>
-        <p>{experience.location}</p>
-        <p>{experience.position}</p>
-        <p className="experience-desc">{experience.description}</p>
       </CvSection>
     </div>
   );

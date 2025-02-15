@@ -20,60 +20,65 @@ function Experience({ experience, setExperience }) {
   return (
     <div className="form-section">
       <h2>Experiencia</h2>
-      <label htmlFor="">
-        Empresa
-        <input
-          type="text"
-          name="company"
-          value={experience.company}
-          onChange={handleChange}
-        />
-      </label>
-      <label htmlFor="">
-        Puesto
-        <input
-          type="text"
-          name="position"
-          value={experience.position}
-          onChange={handleChange}
-        />
-      </label>
-      <label htmlFor="">
-        Inicio
-        <input
-          type="text"
-          name="startDate"
-          value={experience.startDate}
-          onChange={handleChange}
-        />
-      </label>
-      <label htmlFor="">
-        Finalización
-        <input
-          type="text"
-          name="endDate"
-          value={experience.endDate}
-          onChange={handleChange}
-        />
-      </label>
-      <label htmlFor="">
-        Localización
-        <input
-          type="text"
-          name="location"
-          value={experience.location}
-          onChange={handleChange}
-        />
-      </label>
-      <label htmlFor="">
-        Descripción
-        <input
-          type="text"
-          name="description"
-          value={experience.description}
-          onChange={handleChange}
-        />
-      </label>
+
+      {experience.map((exp, index) => (
+        <div key={index}>
+          <label htmlFor="">
+            Empresa
+            <input
+              type="text"
+              name="company"
+              value={exp.company}
+              onChange={handleChange}
+            />
+          </label>
+          <label htmlFor="">
+            Puesto
+            <input
+              type="text"
+              name="position"
+              value={exp.position}
+              onChange={handleChange}
+            />
+          </label>
+          <label htmlFor="">
+            Inicio
+            <input
+              type="text"
+              name="startDate"
+              value={exp.startDate}
+              onChange={handleChange}
+            />
+          </label>
+          <label htmlFor="">
+            Finalización
+            <input
+              type="text"
+              name="endDate"
+              value={exp.endDate}
+              onChange={handleChange}
+            />
+          </label>
+          <label htmlFor="">
+            Localización
+            <input
+              type="text"
+              name="location"
+              value={exp.location}
+              onChange={handleChange}
+            />
+          </label>
+          <label htmlFor="">
+            Descripción
+            <input
+              type="text"
+              name="description"
+              value={exp.description}
+              onChange={handleChange}
+            />
+          </label>
+        </div>
+      ))}
     </div>
   );
 }
