@@ -38,7 +38,7 @@ function CvPreview({ generalInfo, education, experience }) {
         </div>
       </CvSection>
 
-      <CvSection title="Experiencia Laboral" className="experience">
+      <CvSection title="Experiencia" className="experience">
         <div className="experience-container">
           {experience.map((exp, index) => (
             <div key={index} className="experience-item">
