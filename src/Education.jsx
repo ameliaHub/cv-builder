@@ -2,16 +2,15 @@ import { useState } from "react";
 
 function Education({ education, setEducation }) {
   //Manejador de cambios (handleChange): Cada vez que un usuario escribe algo en el campo, el handleChange se llama, y actualiza el estado local correspondiente:
-  const handleChange = (e) => {
+  const handleChange = (e, index) => {
     const { name, value } = e.target;
 
-    //Actualizar la información general en el componente padre
-    //(para que se actualice el folio a la vez que escribes en el input)
-    // Usamos una función de actualización para asegurarnos de que toma el valor más reciente
-    setEducation((prevState) => ({
-      ...prevState,
-      [name]: value, // Solo actualizamos la propiedad que ha cambiado
-    }));
+    //Al ser un array, debemos actualizar solo el objeto con el indice correspondiente
+    const updatedEducation = education.map((educ, i) =>
+      i === index ? { ...educ, [name]: value } : educ
+    );
+
+    setEducation(updatedEducation);
   };
 
   //El value del campo: Cada campo de entrada (<input>) tiene un atributo value, que está vinculado al estado local:
@@ -29,7 +28,7 @@ function Education({ education, setEducation }) {
               type="text"
               name="school"
               value={educ.school}
-              onChange={handleChange}
+              onChange={(e) => handleChange(e, index)}
             />
           </label>
           <label htmlFor="">
@@ -38,7 +37,7 @@ function Education({ education, setEducation }) {
               type="text"
               name="degree"
               value={educ.degree}
-              onChange={handleChange}
+              onChange={(e) => handleChange(e, index)}
             />
           </label>
           <label htmlFor="">
@@ -47,7 +46,7 @@ function Education({ education, setEducation }) {
               type="text"
               name="startDate"
               value={educ.startDate}
-              onChange={handleChange}
+              onChange={(e) => handleChange(e, index)}
             />
           </label>
           <label htmlFor="">
@@ -56,7 +55,7 @@ function Education({ education, setEducation }) {
               type="text"
               name="endDate"
               value={educ.endDate}
-              onChange={handleChange}
+              onChange={(e) => handleChange(e, index)}
             />
           </label>
           <label htmlFor="">
@@ -65,7 +64,7 @@ function Education({ education, setEducation }) {
               type="text"
               name="location"
               value={educ.location}
-              onChange={handleChange}
+              onChange={(e) => handleChange(e, index)}
             />
           </label>
         </div>
