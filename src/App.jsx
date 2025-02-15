@@ -13,25 +13,46 @@ function App() {
     email: "maria@gmail.com",
     phone: "666 666 666",
   };
-  const initialEducation = {
-    school: "Universidad de Granada",
-    degree: "Ingeniería informática",
-    startDate: "20-09-21",
-    endDate: "04-05-25",
-    location: "Granada",
-  };
-  const initalExperience = {
-    company: "Meta",
-    position: "Data Engineer",
-    startDate: "17-11-22",
-    endDate: "28-04-23",
-    location: "Florida",
-    description: "Managing use of case from...",
-  };
+  const initialEducation = [
+    {
+      school: "Universidad de Granada",
+      degree: "Ingeniería informática",
+      startDate: "20-09-21",
+      endDate: "04-05-25",
+      location: "Granada",
+    },
+    {
+      school: "Universidad Politécnica de Madrid",
+      degree: "Máster en Ciencias de la Computación",
+      startDate: "05-09-25",
+      endDate: "05-06-27",
+      location: "Madrid",
+    },
+  ];
+  const initialExperience = [
+    {
+      company: "Meta",
+      position: "Ingeniero de datos",
+      startDate: "17-11-22",
+      endDate: "28-04-23",
+      location: "Florida",
+      description:
+        "Encargado de gestionar los flujos de datos y optimizar el almacenamiento de información. Desarrollé procesos ETL escalables para apoyar a los equipos de inteligencia empresarial. Colaboré con científicos de datos para mejorar modelos predictivos utilizando grandes volúmenes de datos.",
+    },
+    {
+      company: "Google",
+      position: "Ingeniero de Software",
+      startDate: "10-06-23",
+      endDate: "Presente",
+      location: "California",
+      description:
+        "Desarrollo y mantenimiento de sistemas backend de alto rendimiento para servicios en la nube. Lidero un equipo en el desarrollo de herramientas de análisis basadas en inteligencia artificial. Implementación de arquitectura de microservicios para mejorar la escalabilidad y resiliencia del sistema.",
+    },
+  ];
 
   const [generalInfo, setGeneralInfo] = useState(initialGeneralInfo);
   const [education, setEducation] = useState(initialEducation);
-  const [experience, setExperience] = useState(initalExperience);
+  const [experience, setExperience] = useState(initialExperience);
 
   const handleButtonClick = (action) => {
     if (action === "limpiar") {
@@ -54,7 +75,7 @@ function App() {
     } else if (action === "cargarEjemplo") {
       setGeneralInfo(initialGeneralInfo);
       setEducation(initialEducation);
-      setExperience(initalExperience);
+      setExperience(initialExperience);
     }
   };
 
