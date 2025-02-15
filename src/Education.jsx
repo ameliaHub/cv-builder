@@ -20,51 +20,56 @@ function Education({ education, setEducation }) {
   return (
     <div className="form-section">
       <h2>Educación</h2>
-      <label htmlFor="">
-        Universidad
-        <input
-          type="text"
-          name="school"
-          value={education.school}
-          onChange={handleChange}
-        />
-      </label>
-      <label htmlFor="">
-        Grado
-        <input
-          type="text"
-          name="degree"
-          value={education.degree}
-          onChange={handleChange}
-        />
-      </label>
-      <label htmlFor="">
-        Inicio
-        <input
-          type="text"
-          name="startDate"
-          value={education.startDate}
-          onChange={handleChange}
-        />
-      </label>
-      <label htmlFor="">
-        Finalización
-        <input
-          type="text"
-          name="endDate"
-          value={education.endDate}
-          onChange={handleChange}
-        />
-      </label>
-      <label htmlFor="">
-        Localización
-        <input
-          type="text"
-          name="location"
-          value={education.location}
-          onChange={handleChange}
-        />
-      </label>
+
+      {education.map((educ, index) => (
+        <div key={index}>
+          <label htmlFor="">
+            Universidad
+            <input
+              type="text"
+              name="school"
+              value={educ.school}
+              onChange={handleChange}
+            />
+          </label>
+          <label htmlFor="">
+            Grado
+            <input
+              type="text"
+              name="degree"
+              value={educ.degree}
+              onChange={handleChange}
+            />
+          </label>
+          <label htmlFor="">
+            Inicio
+            <input
+              type="text"
+              name="startDate"
+              value={educ.startDate}
+              onChange={handleChange}
+            />
+          </label>
+          <label htmlFor="">
+            Finalización
+            <input
+              type="text"
+              name="endDate"
+              value={educ.endDate}
+              onChange={handleChange}
+            />
+          </label>
+          <label htmlFor="">
+            Localización
+            <input
+              type="text"
+              name="location"
+              value={educ.location}
+              onChange={handleChange}
+            />
+          </label>
+        </div>
+      ))}
     </div>
   );
 }
