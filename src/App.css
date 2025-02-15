@@ -61,11 +61,8 @@ body {
   padding: 50px 50px 0px 50px;
   background: white;
   border-radius: 5px;
-  display: grid;
-  grid-template-columns: 1fr 2fr; /* 3 columnas a la izquierda, 2 a la derecha */
-  grid-template-rows: auto 1fr; /* 1 fila para el título, 1 para el contenido */
-  column-gap: 0px;
-  align-items: start;
+  display: flex;
+  flex-direction: column;
 }
 
 .cv-section * {
@@ -87,6 +84,32 @@ body {
   text-align: center;
   background-color: #f4f4f4;
   grid-column: span 2;
+}
+
+.education-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.education-item {
+  display: grid;
+  grid-template-columns: 1fr 2fr; /* 3 columnas a la izquierda, 2 a la derecha */
+  grid-template-rows: auto 1fr; /* 1 fila para el título, 1 para el contenido */
+  align-items: start;
+}
+
+.experience-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.experience-item {
+  display: grid;
+  grid-template-columns: 1fr 2fr; /* 3 columnas a la izquierda, 2 a la derecha */
+  grid-template-rows: auto 1fr; /* 1 fila para el título, 1 para el contenido */
+  align-items: start;
 }
 
 .general-info {
