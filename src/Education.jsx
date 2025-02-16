@@ -41,71 +41,76 @@ function Education({ education, setEducation }) {
     <div className="form-section">
       <h2>Educación</h2>
 
-      {education.map((educ, index) => (
-        <div key={index}>
-          <button className="view-btn" onClick={() => handleViewOnClick(index)}>
-            {educ.isVisible ? "Ocultar" : "Ver"}
-          </button>
-          {/* Solo mostramos el formulario si isVisible es true */}
-          {educ.isVisible ? (
-            <>
-              <label htmlFor="">
-                Universidad
-                <input
-                  type="text"
-                  name="school"
-                  value={educ.school}
-                  onChange={(e) => handleChange(e, index)}
-                />
-              </label>
-              <label htmlFor="">
-                Grado
-                <input
-                  type="text"
-                  name="degree"
-                  value={educ.degree}
-                  onChange={(e) => handleChange(e, index)}
-                />
-              </label>
-              <label htmlFor="">
-                Inicio
-                <input
-                  type="text"
-                  name="startDate"
-                  value={educ.startDate}
-                  onChange={(e) => handleChange(e, index)}
-                />
-              </label>
-              <label htmlFor="">
-                Finalización
-                <input
-                  type="text"
-                  name="endDate"
-                  value={educ.endDate}
-                  onChange={(e) => handleChange(e, index)}
-                />
-              </label>
-              <label htmlFor="">
-                Localización
-                <input
-                  type="text"
-                  name="location"
-                  value={educ.location}
-                  onChange={(e) => handleChange(e, index)}
-                />
-              </label>
-            </>
-          ) : (
-            // Si no está visible, solo mostrar una franja blanca o algo representativo
-            <div className="collapsed-view">
-              <p>
-                <strong>{educ.school}</strong>
-              </p>
-            </div>
-          )}
-        </div>
-      ))}
-      <button onClick={() => handleAddOnClick()}>Añadir</button>
+      <div className="form-subsection-wrapper">
+        {education.map((educ, index) => (
+          <div key={index} className="form-subsection">
+            <button
+              className="view-btn"
+              onClick={() => handleViewOnClick(index)}
+            >
+              {educ.isVisible ? "Ocultar" : "Ver"}
+            </button>
+            {/* Solo mostramos el formulario si isVisible es true */}
+            {educ.isVisible ? (
+              <>
+                <label htmlFor="">
+                  Universidad
+                  <input
+                    type="text"
+                    name="school"
+                    value={educ.school}
+                    onChange={(e) => handleChange(e, index)}
+                  />
+                </label>
+                <label htmlFor="">
+                  Grado
+                  <input
+                    type="text"
+                    name="degree"
+                    value={educ.degree}
+                    onChange={(e) => handleChange(e, index)}
+                  />
+                </label>
+                <label htmlFor="">
+                  Inicio
+                  <input
+                    type="text"
+                    name="startDate"
+                    value={educ.startDate}
+                    onChange={(e) => handleChange(e, index)}
+                  />
+                </label>
+                <label htmlFor="">
+                  Finalización
+                  <input
+                    type="text"
+                    name="endDate"
+                    value={educ.endDate}
+                    onChange={(e) => handleChange(e, index)}
+                  />
+                </label>
+                <label htmlFor="">
+                  Localización
+                  <input
+                    type="text"
+                    name="location"
+                    value={educ.location}
+                    onChange={(e) => handleChange(e, index)}
+                  />
+                </label>
+              </>
+            ) : (
+              // Si no está visible, solo mostrar una franja blanca o algo representativo
+              <div className="collapsed-view">
+                <p>
+                  <strong>{educ.school}</strong>
+                </p>
+              </div>
+            )}
+          </div>
+        ))}
+        <button onClick={() => handleAddOnClick()}>Añadir</button>
+      </div>
     </div>
   );
 }
