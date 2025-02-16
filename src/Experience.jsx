@@ -20,10 +20,18 @@ function Experience({ experience, setExperience }) {
       endDate: "",
       location: "",
       description: "",
+      isVisible: true,
     };
 
     const newUpdatedExperience = [...experience, newExperience];
     setExperience(newUpdatedExperience);
+  };
+
+  const handleViewOnClick = (index) => {
+    const updatedExperience = experience.map((exp, i) =>
+      i === index ? { ...exp, isVisible: !exp.isVisible } : exp
+    );
+    setExperience(updatedExperience);
   };
 
   //El value del campo: Cada campo de entrada (<input>) tiene un atributo value, que está vinculado al estado local:
@@ -35,60 +43,73 @@ function Experience({ experience, setExperience }) {
 
       {experience.map((exp, index) => (
         <div key={index}>
-          <label htmlFor="">
-            Empresa
-            <input
-              type="text"
-              name="company"
-              value={exp.company}
-              onChange={(e) => handleChange(e, index)}
-            />
-          </label>
-          <label htmlFor="">
-            Puesto
-            <input
-              type="text"
-              name="position"
-              value={exp.position}
-              onChange={(e) => handleChange(e, index)}
-            />
-          </label>
-          <label htmlFor="">
-            Inicio
-            <input
-              type="text"
-              name="startDate"
-              value={exp.startDate}
-              onChange={(e) => handleChange(e, index)}
-            />
-          </label>
-          <label htmlFor="">
-            Finalización
-            <input
-              type="text"
-              name="endDate"
-              value={exp.endDate}
-              onChange={(e) => handleChange(e, index)}
-            />
-          </label>
-          <label htmlFor="">
-            Localización
-            <input
-              type="text"
-              name="location"
-              value={exp.location}
-              onChange={(e) => handleChange(e, index)}
-            />
-          </label>
-          <label htmlFor="">
-            Descripción
-            <input
-              type="text"
-              name="description"
-              value={exp.description}
-              onChange={(e) => handleChange(e, index)}
-            />
-          </label>
+          <button className="view-btn" onClick={() => handleViewOnClick(index)}>
+            {exp.isVisible ? "Ocultar" : "Ver"}
+          </button>
+          {exp.isVisible ? (
+            <>
+              <label htmlFor="">
+                Empresa
+                <input
+                  type="text"
+                  name="company"
+                  value={exp.company}
+                  onChange={(e) => handleChange(e, index)}
+                />
+              </label>
+              <label htmlFor="">
+                Puesto
+                <input
+                  type="text"
+                  name="position"
+                  value={exp.position}
+                  onChange={(e) => handleChange(e, index)}
+                />
+              </label>
+              <label htmlFor="">
+                Inicio
+                <input
+                  type="text"
+                  name="startDate"
+                  value={exp.startDate}
+                  onChange={(e) => handleChange(e, index)}
+                />
+              </label>
+              <label htmlFor="">
+                Finalización
+                <input
+                  type="text"
+                  name="endDate"
+                  value={exp.endDate}
+                  onChange={(e) => handleChange(e, index)}
+                />
+              </label>
+              <label htmlFor="">
+                Localización
+                <input
+                  type="text"
+                  name="location"
+                  value={exp.location}
+                  onChange={(e) => handleChange(e, index)}
+                />
+              </label>
+              <label htmlFor="">
+                Descripción
+                <input
+                  type="text"
+                  name="description"
+                  value={exp.description}
+                  onChange={(e) => handleChange(e, index)}
+                />
+              </label>
+            </>
+          ) : (
+            <div className="collapsed-view">
+              <p>
+                <strong>{exp.company}</strong>
+              </p>
+            </div>
+          )}
         </div>
       ))}
 
