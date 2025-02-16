@@ -43,11 +43,7 @@ function Education({ education, setEducation }) {
 
       {education.map((educ, index) => (
         <div key={index}>
-          <button
-            className="view-btn"
-            data-view="open"
-            onClick={(e) => handleViewOnClick(index)}
-          >
+          <button className="view-btn" onClick={() => handleViewOnClick(index)}>
             {educ.isVisible ? "Ocultar" : "Ver"}
           </button>
           {/* Solo mostramos el formulario si isVisible es true */}
@@ -102,7 +98,9 @@ function Education({ education, setEducation }) {
           ) : (
             // Si no está visible, solo mostrar una franja blanca o algo representativo
             <div className="collapsed-view">
-              <p>{educ.school}</p>
+              <p>
+                <strong>{educ.school}</strong>
+              </p>
             </div>
           )}
         </div>
