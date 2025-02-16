@@ -1,6 +1,5 @@
 import { useState } from "react";
 
-
 function Education({ education, setEducation }) {
   //Manejador de cambios (handleChange): Cada vez que un usuario escribe algo en el campo, el handleChange se llama, y actualiza el estado local correspondiente:
   const handleChange = (e, index) => {
@@ -108,9 +107,7 @@ function Education({ education, setEducation }) {
           )}
         </div>
       ))}
-      <button onClick={() => handleAddOnClick(setEducation, education)}>
-        Añadir
-      </button>
+      <button onClick={() => handleAddOnClick()}>Añadir</button>
     </div>
   );
 }
