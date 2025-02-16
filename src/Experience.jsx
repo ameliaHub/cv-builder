@@ -41,79 +41,84 @@ function Experience({ experience, setExperience }) {
     <div className="form-section">
       <h2>Experiencia</h2>
 
-      {experience.map((exp, index) => (
-        <div key={index}>
-          <button className="view-btn" onClick={() => handleViewOnClick(index)}>
-            {exp.isVisible ? "Ocultar" : "Ver"}
-          </button>
-          {exp.isVisible ? (
-            <>
-              <label htmlFor="">
-                Empresa
-                <input
-                  type="text"
-                  name="company"
-                  value={exp.company}
-                  onChange={(e) => handleChange(e, index)}
-                />
-              </label>
-              <label htmlFor="">
-                Puesto
-                <input
-                  type="text"
-                  name="position"
-                  value={exp.position}
-                  onChange={(e) => handleChange(e, index)}
-                />
-              </label>
-              <label htmlFor="">
-                Inicio
-                <input
-                  type="text"
-                  name="startDate"
-                  value={exp.startDate}
-                  onChange={(e) => handleChange(e, index)}
-                />
-              </label>
-              <label htmlFor="">
-                Finalización
-                <input
-                  type="text"
-                  name="endDate"
-                  value={exp.endDate}
-                  onChange={(e) => handleChange(e, index)}
-                />
-              </label>
-              <label htmlFor="">
-                Localización
-                <input
-                  type="text"
-                  name="location"
-                  value={exp.location}
-                  onChange={(e) => handleChange(e, index)}
-                />
-              </label>
-              <label htmlFor="">
-                Descripción
-                <input
-                  type="text"
-                  name="description"
-                  value={exp.description}
-                  onChange={(e) => handleChange(e, index)}
-                />
-              </label>
-            </>
-          ) : (
-            <div className="collapsed-view">
-              <p>
-                <strong>{exp.company}</strong>
-              </p>
-            </div>
-          )}
-        </div>
-      ))}
+      <div className="form-subsection-wrapper">
+        {experience.map((exp, index) => (
+          <div key={index} className="form-subsection">
+            <button
+              className="view-btn"
+              onClick={() => handleViewOnClick(index)}
+            >
+              {exp.isVisible ? "Ocultar" : "Ver"}
+            </button>
+            {exp.isVisible ? (
+              <>
+                <label htmlFor="">
+                  Empresa
+                  <input
+                    type="text"
+                    name="company"
+                    value={exp.company}
+                    onChange={(e) => handleChange(e, index)}
+                  />
+                </label>
+                <label htmlFor="">
+                  Puesto
+                  <input
+                    type="text"
+                    name="position"
+                    value={exp.position}
+                    onChange={(e) => handleChange(e, index)}
+                  />
+                </label>
+                <label htmlFor="">
+                  Inicio
+                  <input
+                    type="text"
+                    name="startDate"
+                    value={exp.startDate}
+                    onChange={(e) => handleChange(e, index)}
+                  />
+                </label>
+                <label htmlFor="">
+                  Finalización
+                  <input
+                    type="text"
+                    name="endDate"
+                    value={exp.endDate}
+                    onChange={(e) => handleChange(e, index)}
+                  />
+                </label>
+                <label htmlFor="">
+                  Localización
+                  <input
+                    type="text"
+                    name="location"
+                    value={exp.location}
+                    onChange={(e) => handleChange(e, index)}
+                  />
+                </label>
+                <label htmlFor="">
+                  Descripción
+                  <input
+                    type="text"
+                    name="description"
+                    value={exp.description}
+                    onChange={(e) => handleChange(e, index)}
+                  />
+                </label>
+              </>
+            ) : (
+              <div className="collapsed-view">
+                <p>
+                  <strong>{exp.company}</strong>
+                </p>
+              </div>
+            )}
+          </div>
+        ))}
 
-      <button onClick={() => handleAddOnClick()}>Añadir</button>
+        <button onClick={() => handleAddOnClick()}>Añadir</button>
+      </div>
     </div>
   );
 }
