@@ -13,6 +13,12 @@ function Buttons({ handleButtonClick }) {
       >
         Cargar ejemplo
       </button>
+      <button
+        className="download-btn"
+        onClick={() => handleButtonClick("imprimir")}
+      >
+        Descargar CV
+      </button>
     </div>
   );
 }
