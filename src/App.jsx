@@ -6,6 +6,7 @@ import Education from "./Education";
 import Experience from "./Experience";
 import CvPreview from "./CVPreview";
 import Buttons from "./Buttons";
+import html2pdf from "html2pdf.js";
 
 function App() {
   const initialGeneralInfo = {
@@ -20,6 +21,7 @@ function App() {
       startDate: "20-09-21",
       endDate: "04-05-25",
       location: "Granada",
+      isVisible: true,
     },
     {
       school: "Universidad Politécnica de Madrid",
@@ -27,6 +29,7 @@ function App() {
       startDate: "05-09-25",
       endDate: "05-06-27",
       location: "Madrid",
+      isVisible: true,
     },
   ];
   const initialExperience = [
@@ -38,6 +41,7 @@ function App() {
       location: "Florida",
       description:
         "Encargado de gestionar los flujos de datos y optimizar el almacenamiento de información. Desarrollé procesos ETL escalables para apoyar a los equipos de inteligencia empresarial. Colaboré con científicos de datos para mejorar modelos predictivos utilizando grandes volúmenes de datos.",
+      isVisible: true,
     },
     {
       company: "Google",
@@ -47,6 +51,7 @@ function App() {
       location: "California",
       description:
         "Desarrollo y mantenimiento de sistemas backend de alto rendimiento para servicios en la nube. Lidero un equipo en el desarrollo de herramientas de análisis basadas en inteligencia artificial. Implementación de arquitectura de microservicios para mejorar la escalabilidad y resiliencia del sistema.",
+      isVisible: true,
     },
   ];
 
@@ -63,6 +68,19 @@ function App() {
       setGeneralInfo(initialGeneralInfo);
       setEducation(initialEducation);
       setExperience(initialExperience);
+    } else if (action === "imprimir") {
+      //const options = {
+      //margin: 1, // Ajusta márgenes
+      //filename: "CV.pdf", // Define el nombre del archivo PDF
+      //image: { type: "jpeg", quality: 0.98 }, // Mejor calidad de imagen
+      //html2canvas: { scale: 2, useCORS: true }, // Aumenta la calidad de las imágenes y usa CORS si es necesario
+      //jsPDF: { unit: "in", format: "letter", orientation: "portrait" },
+      //};
+
+      // Aquí, seleccionamos el elemento que queremos convertir a PDF y le pasamos las opciones
+      const cv = document.querySelector(".cv-preview");
+      //html2pdf().from(cv).set(options).save();
+      html2pdf(cv);
     }
   };
 
