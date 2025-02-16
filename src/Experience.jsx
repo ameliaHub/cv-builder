@@ -2,16 +2,28 @@ import { useState } from "react";
 
 function Experience({ experience, setExperience }) {
   //Manejador de cambios (handleChange): Cada vez que un usuario escribe algo en el campo, el handleChange se llama, y actualiza el estado local correspondiente:
-  const handleChange = (e) => {
+  const handleChange = (e, index) => {
     const { name, value } = e.target;
 
-    //Actualizar la información general en el componente padre
-    //(para que se actualice el folio a la vez que escribes en el input)
-    // Usamos una función de actualización para asegurarnos de que toma el valor más reciente
-    setExperience((prevState) => ({
-      ...prevState,
-      [name]: value, // Solo actualizamos la propiedad que ha cambiado
-    }));
+    const updatedExperience = experience.map((exp, i) =>
+      i === index ? { ...exp, [name]: value } : exp
+    );
+
+    setExperience(updatedExperience);
+  };
+
+  const handleAddOnClick = () => {
+    const newExperience = {
+      company: "",
+      position: "",
+      startDate: "",
+      endDate: "",
+      location: "",
+      description: "",
+    };
+
+    const newUpdatedExperience = [...experience, newExperience];
+    setExperience(newUpdatedExperience);
   };
 
   //El value del campo: Cada campo de entrada (<input>) tiene un atributo value, que está vinculado al estado local:
@@ -29,7 +41,7 @@ function Experience({ experience, setExperience }) {
               type="text"
               name="company"
               value={exp.company}
-              onChange={handleChange}
+              onChange={(e) => handleChange(e, index)}
             />
           </label>
           <label htmlFor="">
@@ -38,7 +50,7 @@ function Experience({ experience, setExperience }) {
               type="text"
               name="position"
               value={exp.position}
-              onChange={handleChange}
+              onChange={(e) => handleChange(e, index)}
             />
           </label>
           <label htmlFor="">
@@ -47,7 +59,7 @@ function Experience({ experience, setExperience }) {
               type="text"
               name="startDate"
               value={exp.startDate}
-              onChange={handleChange}
+              onChange={(e) => handleChange(e, index)}
             />
           </label>
           <label htmlFor="">
@@ -56,7 +68,7 @@ function Experience({ experience, setExperience }) {
               type="text"
               name="endDate"
               value={exp.endDate}
-              onChange={handleChange}
+              onChange={(e) => handleChange(e, index)}
             />
           </label>
           <label htmlFor="">
@@ -65,7 +77,7 @@ function Experience({ experience, setExperience }) {
               type="text"
               name="location"
               value={exp.location}
-              onChange={handleChange}
+              onChange={(e) => handleChange(e, index)}
             />
           </label>
           <label htmlFor="">
@@ -74,11 +86,13 @@ function Experience({ experience, setExperience }) {
               type="text"
               name="description"
               value={exp.description}
-              onChange={handleChange}
+              onChange={(e) => handleChange(e, index)}
             />
           </label>
         </div>
       ))}
+
+      <button onClick={() => handleAddOnClick()}>Añadir</button>
     </div>
   );
 }
