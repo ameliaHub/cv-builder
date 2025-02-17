@@ -69,18 +69,33 @@ function App() {
       setEducation(initialEducation);
       setExperience(initialExperience);
     } else if (action === "imprimir") {
-      //const options = {
-      //margin: 1, // Ajusta márgenes
-      //filename: "CV.pdf", // Define el nombre del archivo PDF
-      //image: { type: "jpeg", quality: 0.98 }, // Mejor calidad de imagen
-      //html2canvas: { scale: 2, useCORS: true }, // Aumenta la calidad de las imágenes y usa CORS si es necesario
-      //jsPDF: { unit: "in", format: "letter", orientation: "portrait" },
-      //};
-
-      // Aquí, seleccionamos el elemento que queremos convertir a PDF y le pasamos las opciones
       const cv = document.querySelector(".cv-preview");
-      //html2pdf().from(cv).set(options).save();
+      const options = {
+        margin: [0, 0, 0, 0], // Márgenes mínimos para aprovechar todo el espacio
+        filename: "CV.pdf",
+        image: { type: "jpeg", quality: 1 }, // Calidad máxima de imagen
+        html2canvas: {
+          scale: 1, // Captura a tamaño real, ignora el transform: scale del CSS
+          useCORS: true, // Por si tienes imágenes externas
+          logging: false, // Evita logs innecesarios en consola
+          windowWidth: cv.scrollWidth, // Anchura real del elemento (evita la escala CSS)
+          windowHeight: cv.scrollHeight, // Altura real del elemento
+        },
+        jsPDF: {
+          unit: "mm",
+          format: "a4",
+          orientation: "portrait", // Modo vertical
+        },
+      };
+
+      // Seleccionamos el elemento y generamos el PDF
+
+      html2pdf().from(cv).set(options).save();
+
+      /*
+      const cv = document.querySelector(".cv-preview");
       html2pdf(cv);
+      */
     }
   };
 
