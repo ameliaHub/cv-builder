@@ -11,8 +11,8 @@ import html2pdf from "html2pdf.js";
 function App() {
   const initialGeneralInfo = {
     userName: "María Martínez",
-    email: "maria@gmail.com",
-    phone: "666 666 666",
+    email: "maria@gmail-falso.com",
+    phone: "700 700 700",
   };
   const initialEducation = [
     {
